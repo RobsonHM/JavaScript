@@ -1,0 +1,139 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Exercise 2</title>
+
+    <style> 
+    .messageOrderPlaced { 
+    background-color: lightgreen; 
+    color: #000; 
+    border: solid 1px green;
+    padding: 10px; 
+    border-radius: 5px
+    }
+    </style>
+</head>
+
+<body>
+    <h1 id="BigHeading">Coxinha</h1>
+
+    <p><strong>What it is</strong></p>
+    <p>Coxinha is a deep-fried savory pastry made from a soft dough (usually wheat flour cooked in chicken broth) and filled with shredded chicken.</p>
+    <p>It's traditionally shaped like a teardrop, said to resemble a chicken drumstick (coxa in Portuguese—hence the name). </p>
+    <p><strong>Filling & variations</strong></p>
+    <p>Classic: Shredded chicken with cream cheese (requeijão)</p>
+    <p>Chicken with catupiry-style cheese</p>
+    <p>Beef or pulled pork</p>
+    <p>Vegetarian versions (mushroom, jackfruit, hearts of palm)</p>
+    <p>Mini coxinhas for parties (coxinha de festa)</p>
+
+    <!-- Button linked to event handler function -->
+    <button id="btn_1" onclick="changeHeading()">Update h1</button>
+    <button id="btn_2" onclick="restoreHeading()">Restore h1</button>
+    <button id="btn_4" onclick="placeOrder()">Order product</button>
+
+    <p>&nbsp;</p>
+    <div id="myDIV"> sample text </div>
+    <button onclick="turnGreen()">Turn Green</button>
+    <button onclick="resetGreen()">Reset Color</button>
+
+    <script>
+
+        let name = "John";
+        let lastName = "Doe";
+        let favoriteSinger = "Pele";
+
+        console.log(`Hi! my name is ${name} ${lastName} and my favorite singer is ${favoriteSinger}.`);
+
+        // ======== FUNCTION DECLARATIONS ========
+
+        // Function declaration	
+        function displayGreeting() {
+        console.log('Hello, world!');
+        }
+        displayGreeting();
+
+        // Function declaration with parameter
+        function showNumber(num) {
+        console.log(`Number passed as parameter is: ${num}`);
+        }
+        showNumber(21); 
+
+        // Function declaration with two parameters
+        function addTwoNumbers(num1, num2) {
+            console.log(`Sum is : ${num1 + num2}`); 
+        }
+        let result1 = addTwoNumbers(1, 2);
+
+        // Function declaration with two parameters
+        function addTwoNumbers(num1, num2) {
+            return (num1 + num2);
+            console.log(`Sum is : ${num1 + num2}`); 
+        }
+        let result = addTwoNumbers(1, 2);
+        console.log(`Returned result: ${result}`);
+
+        function calculateArea(x, y) {return x * y;}
+        let area = calculateArea(6,4);
+        console.log(`Area is: ${area}`);
+
+        let BigHeading = document.getElementById("BigHeading");
+        console.log(BigHeading.innerText);
+        //change the text of BigHeading to "Coxinha is life"
+        BigHeading.innerText = "Coxinha is life";
+
+        // JavaScript can change the properties of an element
+        BigHeading.style.backgroundColor = 'black'; 
+        BigHeading.style.color = 'red';
+
+        function changeHeading() {
+            let BigHeading = document.getElementById('BigHeading');
+            BigHeading.classList.add('newHeadingClass');
+            BigHeading.innerText = 'New heading text from JS';
+            BigHeading.innerHTML = 'New heading text in <i>italics</i> from JS';
+        }
+        function restoreHeading() {
+            let BigHeading = document.getElementById('BigHeading');
+            BigHeading.classList.remove('newHeadingClass');
+            BigHeading.innerText = 'Big heading here';
+        }
+
+        function placeOrder() {
+            let newMessage = document.createElement("div");
+            newMessage.classList.add("messageOrderPlaced");
+            newMessage.innerHTML = "Your order has been placed. <b>Thank you</b>";
+            document.body.appendChild(newMessage);
+
+            const messages = document.querySelectorAll(".messageOrderPlaced");
+
+            if (messages.length > 3) {
+                messages[0].remove(); // remove the oldest message automatically 
+            }
+
+                setTimeout(() => {
+                    newMessage.remove();
+                }, 5000); // remove after 5 seconds
+        }
+
+        function turnGreen(){
+            let var1 = document.getElementById("myDIV");
+            var1.style.backgroundColor = "green";
+        }
+        function resetGreen(){
+            let var1 = document.getElementById("myDIV");
+            var1.style.backgroundColor = "white";
+        }
+         // ------------ anonymous function ------------
+
+        const showGreeting2 = function() {
+            console.log('Hello from function expression!');
+        };
+        showGreeting2();
+
+        (function() {
+            console.log('Hello from IIFE (Immediately Invoked Function Expression)!');
+        })();
+
+    </script>
+    
+</body>

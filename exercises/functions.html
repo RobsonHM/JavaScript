@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sorteador</title>
+
+  <!-- Importante para mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 400px;
+      margin: auto;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      font-size: 16px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f2f2f2;
+      margin-top: 5px;
+      padding: 8px;
+      border-radius: 5px;
+    }
+
+    .remover {
+      background: red;
+      color: white;
+      border: none;
+      padding: 5px 8px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    .resultado {
+      margin-top: 15px;
+      font-weight: bold;
+      color: green;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Sorteador</h2>
+
+  <input type="text" id="valorInput" placeholder="Digite um nome ou número">
+  <button onclick="adicionar()">Adicionar</button>
+
+  <ul id="lista"></ul>
+
+  <button onclick="sortear()">Sortear aleatório</button>
+
+  <div class="resultado" id="resultado"></div>
+
+  <script>
+    const valores = [];
+
+    function adicionar() {
+      const input = document.getElementById("valorInput");
+      const valor = input.value.trim();
+
+      if (valor === "") {
+        alert("Digite algo!");
+        return;
+      }
+
+      // Evita repetidos
+      if (valores.includes(valor)) {
+        alert("Esse valor já foi adicionado!");
+        return;
+      }
+
+      valores.push(valor);
+      atualizarLista();
+      input.value = "";
+      input.focus();
+    }
+
+    function remover(index) {
+      valores.splice(index, 1);
+      atualizarLista();
+    }
+
+    function atualizarLista() {
+      const ul = document.getElementById("lista");
+      ul.innerHTML = "";
+
+      valores.forEach((valor, index) => {
+        const li = document.createElement("li");
+        li.textContent = valor;
+
+        const btn = document.createElement("button");
+        btn.textContent = "X";
+        btn.className = "remover";
+        btn.onclick = () => remover(index);
+
+        li.appendChild(btn);
+        ul.appendChild(li);
+      });
+    }
+
+    function sortear() {
+      if (valores.length === 0) {
+        alert("Adicione pelo menos um valor!");
+        return;
+      }
+
+      const indice = Math.floor(Math.random() * valores.length);
+      document.getElementById("resultado").textContent =
+        "Resultado sorteado: " + valores[indice];
+    }
+  </script>
+
+</body>
+</html>
