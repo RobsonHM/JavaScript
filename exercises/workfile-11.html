@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working with the event object</title>
+    <script src="script-11.js" defer></script>
+    <style>
+        .btn {
+            font-size: 16px;
+            margin: 5px;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            color: white;
+        }
+
+        .btn-blue { background-color: #007BFF; }
+        .btn-green { background-color: #28a745; }
+        .btn-red { background-color: #dc3545; }
+        .btn-purple { background-color: #6f42c1; }
+    </style>
+</head>
+<body> 
+<button id="myButton" class="btn-blue">Click me</button>
+
+<div id="outer">
+    <div id="inner">
+        <button id="myNewButton">Click me</button>
+    </div>
+</div>
+<div id="buttonContainer">
+    <h2>Button container</h2>
+    <button id="btn-1" class="btn btn-green">Button 1</button>
+    <button id="btn-2" class="btn btn-red">Button 2</button>
+    <button id="btn-3" class="btn btn-blue">Button 3</button>
+</div>
+</body>
+</html>

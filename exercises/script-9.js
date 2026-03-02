@@ -52,3 +52,9 @@ let resultCalcMultiply = doCalculation(10, 5, multiplyTwoNums);
 console.log(`Calculator multiplication result: ${resultCalcMultiply}`);// 50
 let resultCalcDivide = doCalculation(10, 5, divideTwoNums); 
 console.log(`Calculator division result: ${resultCalcDivide}`);// 2
+
+const formName = function (firstName, lastName) {
+    return firstName + ' ' + lastName.toUpperCase();
+}
+
+console.log(formName('John', 'Doe'));
