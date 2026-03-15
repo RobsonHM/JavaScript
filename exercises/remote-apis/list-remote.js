@@ -18,40 +18,37 @@ async function fetchCountriesData() {
 }
 
  
+// --- Update your Users Fetch ---
 async function fetchUsersData() {
     try {
         const response = await fetch("https://jsonplaceholder.typicode.com/users");
-
-        if (!response.ok) {
-            console.log(`Network response was not ok - Status: ${response.status}`);
-            return;
-        }
+        if (!response.ok) return;
 
         const data = await response.json();
-        displayUsersData(data);
+        
+        currentData = data; 
+        activeCategory = "users";
 
+        displayUsersData(data);
     } catch (error) {
         showError();
-        console.error(`Error fetching data: ${error}`);
     }
 }
 
- 
+// --- Update your Characters Fetch ---
 async function fetchCharactersData() {
     try {
         const response = await fetch("https://rickandmortyapi.com/api/character");
-
-        if (!response.ok) {
-            console.log(`Network response was not ok - Status: ${response.status}`);
-            return;
-        }
+        if (!response.ok) return;
 
         const data = await response.json();
-        displayCharactersData(data);
+        
+        currentData = data.results; 
+        activeCategory = "characters";
 
+        displayCharactersData(data);
     } catch (error) {
         showError();
-        console.error(`Error fetching data: ${error}`);
     }
 }
 
@@ -132,7 +129,7 @@ function displayCharactersData(charactersArray) {
 function showError() {
     const container = document.getElementById("remote-data-container");
     container.innerHTML = `
-        <p class="error">⚠️ Failed to load data. Please try again later.</p>
+        <p class="error"> Failed to load data. Please try again later.</p>
     `;
 }
 
@@ -148,3 +145,38 @@ document.getElementById("button-container").addEventListener("click", function (
         fetchCharactersData();
     }
 });
+
+
+let currentData = [];
+let activeCategory = ""; // "countries", "users", or "characters"
+
+// 2. Add the Search Event Listener
+document.getElementById("search-input").addEventListener("input", (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+
+
+    const filteredResults = currentData.filter(item => {
+       
+        const name = item.name?.common || item.name || "";
+        return name.toLowerCase().includes(searchTerm);
+    });
+
+    if (activeCategory === "countries") displayCountriesData(filteredResults);
+    if (activeCategory === "users") displayUsersData(filteredResults);
+    if (activeCategory === "characters") displayCharactersData({ results: filteredResults });
+});
+
+async function fetchCountriesData() {
+    try {
+        const response = await fetch("https://restcountries.com/v3.1/region/europe");
+        const data = await response.json();
+
+        // SAVE DATA HERE
+        currentData = data; 
+        activeCategory = "countries";
+
+        displayCountriesData(data);
+    } catch (error) {
+        showError();
+    }
+}
