@@ -1,4 +1,4 @@
-// Fetch Countries
+ 
 async function fetchCountriesData() {
     try {
         const response = await fetch("https://restcountries.com/v3.1/region/europe");
@@ -17,7 +17,7 @@ async function fetchCountriesData() {
     }
 }
 
-// Fetch Users
+ 
 async function fetchUsersData() {
     try {
         const response = await fetch("https://jsonplaceholder.typicode.com/users");
@@ -36,7 +36,7 @@ async function fetchUsersData() {
     }
 }
 
-// Fetch Users
+ 
 async function fetchCharactersData() {
     try {
         const response = await fetch("https://rickandmortyapi.com/api/character");
@@ -55,7 +55,7 @@ async function fetchCharactersData() {
     }
 }
 
-// Display Countries
+ 
 function displayCountriesData(countriesArray) {
     const container = document.getElementById("remote-data-container");
     container.innerHTML = ""; // clear previous content

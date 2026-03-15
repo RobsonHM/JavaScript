@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Page title for browser tab -->
+    <title> Robson Henrique SN: 76776 </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Main heading for the login form -->
+    <h1>Student Login Form</h1>
+
+    <!-- Container for the form and success message -->
+    <div class="container">
+        <!-- Success message shown after registration -->
+        <div id="success-message" class="hidden">
+            <p style="background-color: lightgreen; border: 1px solid green; padding: 15px; border-radius: 5px;">
+                Registration Successful!
+            </p>
+        </div>
+
+        <!-- Student registration form -->
+        <form id="studentForm" class="label-above">
+            <!-- First Name input -->
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" placeholder="e.g., John" required>
+                <span id="firstNameError" class="error-text">First name is required.</span>
+            </div>
+
+            <!-- Last Name input -->
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" placeholder="e.g., Smith" required>
+                <span id="lastNameError" class="error-text">Last name is required.</span>
+            </div>
+
+            <!-- Email input -->
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="email@university.edu" required>
+                <span id="emailError" class="error-text">Please enter a valid email address.</span>
+            </div>
+
+            <!-- Password input -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Min 8 characters" required>
+                <span id="passwordError" class="error-text">Password must be at least 8 characters.</span>
+            </div>
+
+            <!-- Student ID input -->
+            <div class="form-group">
+                <label for="studentId">Student ID</label>
+                <input type="number" id="studentId" placeholder="5-digit ID" required>
+                <span id="studentIdError" class="error-text">ID must be between 10000 and 99999.</span>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- Link to JavaScript file for form logic -->
+    <script src="script.js"></script>
+</body>
+</html>

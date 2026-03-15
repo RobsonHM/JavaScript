@@ -1,4 +1,4 @@
-// // Creating array of sample user data
+ 
 const arrUsers = [
     { id: 1001, firstName: "Alice", lastName: "Smith", age: 25, city: "New York", isActive: true },
     { id: 1002, firstName: "Bob", lastName: "Jones", age: 30, city: "Los Angeles", isActive: false },
@@ -13,51 +13,51 @@ const arrUsers = [
 ];
 console.log(arrUsers);
 
-// Add main heading container
+ 
 const mainHeadingContainer = document.createElement("header");
-// Create h1 heading with text
+ 
 const mainHeading = document.createElement("h1");
 mainHeading.innerText = "List of users";
-// Inject h1 in heading container
+ 
 mainHeadingContainer.appendChild(mainHeading);
-// Inject heading container at top of web page
+ 
 document.body.appendChild(mainHeadingContainer);
 
-// Add DIV container to hold data
+ 
 const displayOutputDIV = document.createElement("div");
-// Add CSS class to data container for styling
+ 
 displayOutputDIV.classList.add("data-output");
-// Inject data container to web page under header
+ 
 document.body.appendChild(displayOutputDIV);
 
-// Build HTML output with compound assignment and forEach() loop;
-let htmlOutput = ''; // initial value is an empty string ""
-let userStatus; // variable to display user active or inactive
-let totalUsers = arrUsers.length; // variable to hold total number of users for later display
-let totalAge = 0; // variable to hold total age of all users for later display
+ 
+let htmlOutput = '';
+let userStatus;
+let totalUsers = arrUsers.length;
+let totalAge = 0;
 
 arrUsers.forEach(user => {
-    // Check status of user and assign text to userStatus variable with CSS classes for styling
+    
     userStatus = user.isActive ? "<span class='active-user'>ACTIVE</span>" : "<span class='inactive-user'>INACTIVE</span>";
     htmlOutput += `<div><p>
     <b>${user.lastName.toUpperCase()}</b> ${user.firstName} (ID: ${user.id}) <i>Age</i>: ${user.age} from ${user.city} ${userStatus}
     </p></div>`;
-    // Add this user's age to totalAge
+    
     totalAge += user.age;
 });
 
-// Inject the HTML output into the data container
+ 
 displayOutputDIV.innerHTML = htmlOutput;
 
-// Append the data container to the body
+ 
 document.body.appendChild(displayOutputDIV);
 
-// Outside the loop, display the total numbers of users and their average age
+ 
 const averageAge = totalAge / totalUsers;
 
-// Create a new DIV to hold the totals output
+ 
 const totalsOutputDiv = document.createElement("div");
-// Add CSS class to totals output DIV for styling
+ 
 totalsOutputDiv.classList.add("totals-output");
 
 // Create a new paragraph element to display the totals and average age

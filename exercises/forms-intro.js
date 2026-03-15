@@ -1,4 +1,4 @@
-// Helper validation functions
+ 
 function validateEmail(email) {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailPattern.test(email);
@@ -17,7 +17,7 @@ const formStudentReg = document.getElementById("myBigForm");
 formStudentReg.addEventListener("submit", e => {
     e.preventDefault();
 
-    // Get and trim all input values
+    
     const firstName = document.getElementById("firstName").value.trim();
     const lastName = document.getElementById("lastName").value.trim();
     const email = document.getElementById("email").value.trim();
@@ -26,7 +26,7 @@ formStudentReg.addEventListener("submit", e => {
 
     let isValid = true;
 
-    // First Name validation
+    
     if (firstName === "") {
         document.getElementById("firstNameError").style.display = "block";
         isValid = false;
@@ -34,7 +34,7 @@ formStudentReg.addEventListener("submit", e => {
         document.getElementById("firstNameError").style.display = "none";
     }
 
-    // Last Name validation
+    
     if (lastName === "") {
         document.getElementById("lastNameError").style.display = "block";
         isValid = false;
@@ -42,7 +42,7 @@ formStudentReg.addEventListener("submit", e => {
         document.getElementById("lastNameError").style.display = "none";
     }
 
-    // Email validation
+    
     if (!validateEmail(email)) {
         document.getElementById("emailError").style.display = "block";
         isValid = false;
@@ -50,7 +50,7 @@ formStudentReg.addEventListener("submit", e => {
         document.getElementById("emailError").style.display = "none";
     }
 
-    // Password validation
+    
     if (!validatePassword(password)) {
         document.getElementById("passwordError").style.display = "block";
         isValid = false;
