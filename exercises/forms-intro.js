@@ -1,3 +1,4 @@
+// Robson Henrique SN: 76776
  
 function validateEmail(email) {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

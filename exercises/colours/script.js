@@ -1,3 +1,4 @@
+// Robson Henrique SN: 76776
 
 // Generate a random integer from 0 to max-1
 function getRandomNumber(max) {
